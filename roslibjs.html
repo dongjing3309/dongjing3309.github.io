@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+
+<script type="text/javascript" type="text/javascript">
+  // Connecting to ROS
+  // -----------------
+
+  var sys_url = 'ws://localhost:9090'
+  
+  var ros = new ROSLIB.Ros({
+    url : sys_url
+  });
+
+  ros.on('connection', function() {
+    //document.getElementById('sys_url').innerHTML = sys_url;
+    document.getElementById('sys_status').innerHTML = '<div style="color:#00FF00">Connected</div>';
+  });
+
+  ros.on('error', function(error) {
+    //document.getElementById('sys_url').innerHTML = sys_url;
+    document.getElementById('sys_status').innerHTML = '<div style="color:#FF0000">Error</div>';
+  });
+
+  ros.on('close', function() {
+    //document.getElementById('sys_url').innerHTML = sys_url;
+    document.getElementById('sys_status').innerHTML = '<div style="color:#FF0000">Closed</div>';
+  });
+
+  // Publishing a Topic
+  // ------------------
+
+  // Subscribing to a Topic
+  // ----------------------
+
+  var listener = new ROSLIB.Topic({
+    ros : ros,
+    name : '/listener',
+    messageType : 'std_msgs/String'
+  });
+
+  listener.subscribe(function(message) {
+    console.log('Received message on ' + listener.name + ': ' + message.data);
+  });
+
+</script>
+</head>
+
+<body>
+  <h1>Odroid-U3 Field Camera Box Control Center</h1>
+  System Connection Status: <div id="sys_status"></div>
+  <br/>
+  PX4 Autopilot Connection States: test
+</body>
+</html>
