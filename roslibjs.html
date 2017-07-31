@@ -5,12 +5,107 @@
 
 <script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
 <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+<script type="text/javascript" src="http://cdn.robotwebtools.org/mjpegcanvasjs/current/mjpegcanvas.min.js"></script>
 
 <script type="text/javascript" type="text/javascript">
+  
+  // ----------------------
+  // In the following example, markers appear when the user clicks on the map.
+  // The markers are stored in an array.
+  // The user can then click an option to hide, show or delete the markers.
+  var map;
+  var marker = false;
+
+  function initMap() {
+    var tifton = {lat: 31.473566, lng: -83.529994};
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: tifton,
+      mapTypeId: 'satellite'
+    });
+
+    // Adds a marker at the center of the map.
+    //addMarker(tifton);
+  }
+
+  // Adds a marker to the map and push to the array.
+  function addMarker(location) {
+    var new_marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+    marker = new_marker;
+  }
+  
   // Connecting to ROS
   // -----------------
 
-  var sys_url = 'ws://localhost:9090'
+  var sys_url = 'ws://166.239.216.103:9090';
+  
+  var timer_var = setInterval(timerInterupt, 1000);
+  
+  var d_px4 = false;
+  //var d_imu = false;
+  var d_gps = false;
+  var d_dgps = false;
+  var d_cam = false;
+  
+  function timerInterupt() {
+    var d = new Date();
+    
+    // px4
+    if (d_px4) {
+      var dt = d - d_px4;
+      if (dt > 1000) {
+        document.getElementById('px4_status').innerHTML = '<div style="color:#FF0000">Lost connection: last message ' + dt + ' ms ago</div>';
+      } else {
+        document.getElementById('px4_status').innerHTML = '<div style="color:#00FF00">Connected: last message ' + dt + ' ms ago</div>';
+      }
+    }
+
+/*
+    // imu
+    if (d_imu) {
+      var dt = d - d_imu;
+      if (dt > 2000) {
+        document.getElementById('imu_status').innerHTML = '<div style="color:#FF0000">Lost connection: last message ' + dt + ' ms ago</div>';
+      } else {
+        document.getElementById('imu_status').innerHTML = '<div style="color:#00FF00">Connected: last message ' + dt + ' ms ago</div>';
+      }
+    }
+*/
+
+    // gps
+    if (d_gps) {
+      var dt = d - d_gps;
+      if (dt > 1000) {
+        document.getElementById('gps_status').innerHTML = '<div style="color:#FF0000">Lost connection: last message ' + dt + ' ms ago</div>';
+      } else {
+        document.getElementById('gps_status').innerHTML = '<div style="color:#00FF00">Connected: last message ' + dt + ' ms ago</div>';
+      }
+    }
+
+    // dgps
+    if (d_dgps) {
+      var dt = d - d_dgps;
+      if (dt > 1000) {
+        document.getElementById('dgps_status').innerHTML = '<div style="color:#FF0000">Lost connection: last message ' + dt + ' ms ago</div>';
+      } else {
+        document.getElementById('dgps_status').innerHTML = '<div style="color:#00FF00">Connected: last message ' + dt + ' ms ago</div>';
+      }
+    }
+    
+    // cam
+    if (d_cam) {
+      var dt = d - d_cam;
+      if (dt > 1000) {
+        document.getElementById('cam_status').innerHTML = '<div style="color:#FF0000">Lost connection: last message ' + dt + ' ms ago</div>';
+      } else {
+        document.getElementById('cam_status').innerHTML = '<div style="color:#00FF00">Connected: last message ' + dt + ' ms ago</div>';
+      }
+    }
+  }
   
   var ros = new ROSLIB.Ros({
     url : sys_url
@@ -34,26 +129,164 @@
   // Publishing a Topic
   // ------------------
 
-  // Subscribing to a Topic
+  // Subscribing to Topics
   // ----------------------
 
-  var listener = new ROSLIB.Topic({
+  // px4
+  var px4_listener = new ROSLIB.Topic({
     ros : ros,
-    name : '/listener',
-    messageType : 'std_msgs/String'
+    name : '/mavros/state',
+    messageType : 'mavros_msgs/State'
   });
 
-  listener.subscribe(function(message) {
-    console.log('Received message on ' + listener.name + ': ' + message.data);
+  px4_listener.subscribe(function(message) {
+    d_px4 = new Date();
+    //console.log('Received px4 message');
   });
+  
+/*
+  // imu
+  var imu_listener = new ROSLIB.Topic({
+    ros : ros,
+    name : '/mavros/imu/data',
+    messageType : 'sensor_msgs/Imu'
+  });
+
+  imu_listener.subscribe(function(message) {
+    d_imu = new Date();
+    //console.log('Received imu message');
+  });
+*/
+
+  // gps
+  var gps_listener = new ROSLIB.Topic({
+    ros : ros,
+    name : '/mavros/global_position/raw/fix',
+    messageType : 'sensor_msgs/NavSatFix'
+  });
+
+  gps_listener.subscribe(function(message) {
+    d_gps = new Date();
+    //console.log('Received dgps message');
+  });
+
+  // dgps
+  var dgps_listener = new ROSLIB.Topic({
+    ros : ros,
+    name : '/fix',
+    messageType : 'sensor_msgs/NavSatFix'
+  });
+
+  dgps_listener.subscribe(function(message) {
+    d_dgps = new Date();
+    //console.log('Received dgps message');
+    
+    // add to google map
+    var dgps_location = {lat: message.latitude, lng: message.longitude}
+    var new_marker = new google.maps.Marker({
+      position: dgps_location,
+      map: map
+    });
+    if (marker) {
+      marker.setMap(null);
+    }
+    marker = new_marker;
+    marker.setMap(map);
+  });
+
+  // cam
+  var cam_listener = new ROSLIB.Topic({
+    ros : ros,
+    name : '/camera/camera_info',
+    messageType : 'sensor_msgs/CameraInfo'
+  });
+
+  cam_listener.subscribe(function(message) {
+    d_cam = new Date();
+    //console.log('Received cam info message');
+  });
+
+  
+  // ----------------------
+  // Create the main viewer.
+  function initViewer() {
+    var viewer = new MJPEGCANVAS.Viewer({
+      divID : 'cam_viewer',
+      host : '166.239.216.103',
+      //port : 8080,
+      width : 640,
+      height : 480,
+      quality : 20,
+      refreshRate : 2,
+      topic : '/camera/image_raw'
+    });
+  }
 
 </script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfaMXeXenkDMur2rxW9liKOd-zjmm_G24&callback=initMap">
+</script>
+
+<style>
+  /* Always set the map height explicitly to define the size of the div
+   * element that contains the map. */
+  #map {
+    height: 400px;
+    width: 640px;
+  }
+  #floating-panel {
+    left: 10px;
+    background-color: #fff;
+    padding: 5px;
+  }
+</style>
+
 </head>
 
-<body>
-  <h1>Odroid-U3 Field Camera Box Control Center</h1>
-  System Connection Status: <div id="sys_status"></div>
+<body onload="initViewer()">
+  <h1>Field Camera Monitoring Center</h1>
+  ROS Bridge Status: <a href="#debugnote_ros">ROS debug note</a> <div id="sys_status" style="color:#FF0000">Not Connected</div>
   <br/>
-  PX4 Autopilot Connection States: test
+  DGPS States: <a href="#debugnote_ros">ROS debug note</a> <div id="dgps_status" style="color:#FF0000">Not Connected</div>
+  <br/>
+  Camera States: <a href="#debugnote_ros">ROS debug note</a> <div id="cam_status" style="color:#FF0000">Not Connected</div>
+  <br/>
+  PX4 Autopilot States: <a href="#debugnote_px4">PX4 debug note</a> <div id="px4_status" style="color:#FF0000">Not Connected</div>
+<!--  <br/>-->
+<!--  IMU Connection States: <div id="imu_status" style="color:#FF0000">Not Connected</div>-->
+  <br/>
+  GPS States: <a href="#debugnote_px4">PX4 debug note</a> <div id="gps_status" style="color:#FF0000">Not Connected</div>
+  
+  <br/>
+  <h2>Camera Video<h2/>
+  <div id="cam_viewer"></div>
+
+  <br/>
+  <h2>GPS Map<h2/>
+  <div id="map"></div>
+
+  <h2 id="debugnote_ros">ROS Service Debug Note </h2>
+  * "$" gives commands in Putty. 
+  <ol>
+    <li>$ sudo service ag_firmware stop</li>
+    <li>$ sudo service ag_firmware start</li>
+    <li>Wait about 10 seconds.</li>
+    <li>Refresh the page.</li>
+  </ol>
+  
+  <h2 id="debugnote_px4">PX4+GPS Debug Note </h2>
+  <ol>
+    <li>Power off the system.</li>
+    <li>Remove USB cable on white IMU box.</li>
+    <li>Power on the system.</li>
+    <li>Plug in USB cable on white IMU box.</li>
+    <li>Wait about 30 seconds.</li>
+    <li>Refresh the page.</li>
+  </ol>
+
 </body>
 </html>
+
+
+
