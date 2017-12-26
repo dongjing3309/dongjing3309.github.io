@@ -116,7 +116,8 @@
     </div>
     <div class="col-md-6">
       <p>
-      Automatic crop mornitoring by low cost UAVs and UGVs is an important task in precision agriculture. In this project we collected a multi-years dataset (from 2013) at Tifton, GA with low-cost ground vehicles and drones, and proposed a full-pipeline to perform large scale <em>spatio-temporal 3D reconstruction</em>, called <em>4D reconstruction</em> (3D + time) over the field. After 4D reconstruction, we further process the 4D results to get crop information like height, growth rate, etc. Currently we are working on the machine learning algorithm for robust data association (feature matching) using convolutional neural network.
+      Automatic crop mornitoring by low-cost UAVs and UGVs is an important task in precision agriculture. In this project we collected a multi-years dataset (from 2013) at Tifton, GA with low-cost ground vehicles and drones, and proposed a full-pipeline to perform large scale <em>spatio-temporal 3D reconstruction</em>, called <em>4D reconstruction</em> (3D + time) over the field. After 4D reconstruction, we further process the 4D results to get crop information like height, growth rate, etc. 
+      <!--Currently we are working on the machine learning algorithm for robust data association (feature matching) using convolutional neural network.-->
       </p>
 
  			<br/>
@@ -139,7 +140,7 @@
   
   <br/>
 
-  <h3>Real-time and Online Motion Planning as a Probabilistic Inference Framework</h3>
+  <h3>Real-time and Online Trajectory Optimization as a Probabilistic Inference Framework</h3>
   <br/>
   
   <!-- arxiv ijrr 2017 -->
@@ -151,28 +152,33 @@
     </div>
     <div class="col-md-6">
       <p>
-      In this project we proposed a framework using sparse Gaussian process (GP), formulating motion planning problems as probabilistic inference on factor graphs, and efficiently solve the problems by non-linear least squares or Bayes trees. Evaluation shows our C++ implementation of proposed algorithm reaches real-time performance on online motion planning tasks. We are currently working on a SLAM pipeline using Kinect input to percept dynamic 3D environments and get dynamic 3D volumetric reconstructions.
+      In this project we proposed a tajectory optimization framework using sparse Gaussian process (GP), formulating motion planning or state estimation problems as probabilistic inference on factor graphs, and efficiently solve the problems by non-linear least squares or Bayes trees. Evaluation shows our C++ implementation of proposed algorithm reaches real-time performance on online state estimation and motion planning tasks. 
+      <!--We are currently working on a SLAM pipeline using Kinect input to percept dynamic 3D environments and get dynamic 3D volumetric reconstructions. -->
       </p>
       <p>
-      We have released the open-source C++/Matlab code at <a href="https://github.com/gtrll/gpmp2">GPMP2</a>.
+      We have released the open-source C++/Matlab code at <a href="https://github.com/gtrll/gpmp2">GPMP2</a> for motion planning tasks, and <a href="https://github.com/gtrll/gpslam">GP-SLAM</a> for state estimation/SLAM tasks.
       </p>
 
-       <br/>
+      <br/>
+
       <p>
       <span style="font-weight: bold;">Publication:</span><span style='font-size: 14px;'> (* equal contribution)</span>
       </p>
       <span style='font-size: 14px;'>
       <p>
-      [1] M. Mukadam*, J. Dong*, Y. Yan, F. Dellaert, B. Boots, Continuous-Time Gaussian Process Motion Planning via Probabilistic Inference, <span style="font-style:italic">ArXiv preprint</span> 1707.07383, conditionally accepted in <span style="font-style:italic">IJRR</span>. <a href="files/Mukadam17arxiv.pdf">[PDF]</a>
+      [1] J. Dong, M. Mukadam, B. Boots, F. Dellaert, Sparse Gaussian Processes on Matrix Lie Groups: A Unified Framework for Optimizing Continuous-Time Trajectories, submitted to <span style="font-style:italic">ICRA</span> 2018.
       </p>
       <p>
-      [2] J. Dong, B. Boots, F. Dellaert, Sparse Gaussian Processes for Continuous-Time Trajectory Estimation on Matrix Lie Groups, <span style="font-style:italic">ArXiv preprint</span> 1705.06020. <a href="files/Dong17arxiv2.pdf">[PDF]</a>
+      [2] M. Mukadam*, J. Dong*, Y. Yan, F. Dellaert, B. Boots, Continuous-Time Gaussian Process Motion Planning via Probabilistic Inference, <span style="font-style:italic">ArXiv preprint</span> 1707.07383, conditionally accepted in <span style="font-style:italic">IJRR</span>. <a href="files/Mukadam17arxiv.pdf">[PDF]</a>
       </p>
       <p>
-      [3] M. Mukadam, J. Dong, F. Dellaert, B. Boots, Simultaneous Trajectory Estimation and Planning via Probabilistic Inference, in <span style="font-style:italic">RSS</span> 2017. <a href="files/Mukadam17rss.pdf">[PDF]</a>
+      [3] J. Dong, B. Boots, F. Dellaert, Sparse Gaussian Processes for Continuous-Time Trajectory Estimation on Matrix Lie Groups, <span style="font-style:italic">ArXiv preprint</span> 1705.06020. <a href="files/Dong17arxiv2.pdf">[PDF]</a>
       </p>
       <p>
-      [4] J. Dong, M. Mukadam, F. Dellaert, B. Boots, Motion Planning as Probabilistic Inference using Gaussian Processes and Factor Graphs, in <span style="font-style:italic">RSS</span> 2016. <a href="files/Dong16rss.pdf">[PDF]</a>
+      [4] M. Mukadam, J. Dong, F. Dellaert, B. Boots, Simultaneous Trajectory Estimation and Planning via Probabilistic Inference, in <span style="font-style:italic">RSS</span> 2017. <a href="files/Mukadam17rss.pdf">[PDF]</a>
+      </p>
+      <p>
+      [5] J. Dong, M. Mukadam, F. Dellaert, B. Boots, Motion Planning as Probabilistic Inference using Gaussian Processes and Factor Graphs, in <span style="font-style:italic">RSS</span> 2016. <a href="files/Dong16rss.pdf">[PDF]</a>
       </p>
       </span>
     </div>
@@ -192,7 +198,7 @@
     </div>
     <div class="col-md-6">
       <p>
-      We demonstrated distributed, online, and real-time cooperative localization and mapping between multiple robots operating throughout an unknown environment with unknown initial deployment. We present a novel Expectation Maximization (EM) based approach to efficiently online identify inlier multi-robot loop closures by incorporating robot pose uncertainty, which significantly improves the trajectory accuracy over long-term navigation. Evaluation was performed on CMU quadrotor swarm.
+      We demonstrated a distributed, online, and real-time cooperative SLAM between multiple robots operating throughout an unknown environment with unknown initial deployment. We present a Expectation Maximization (EM) based approach to efficiently online identify inlier multi-robot loop closures by incorporating robot pose uncertainty, which significantly improves the accuracy over long-term navigation. Evaluation was performed on CMU quadrotor swarm.
       </p>
 
       <br/>
