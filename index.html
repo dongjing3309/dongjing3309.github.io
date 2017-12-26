@@ -18,16 +18,6 @@
   
   <!-- custom css -->
   <link href="css/custom.css" rel="stylesheet">
-  
-  <script>
-  function showPubs(id) {
-    if (id == 0) {
-      document.getElementById('pubs').innerHTML = document.getElementById('pubs_by_date').innerHTML;
-    } else {
-      document.getElementById('pubs').innerHTML = document.getElementById('pubs_by_topic').innerHTML;
-    }
-  }
-  </script>
 </head>
 
 <body>
@@ -36,11 +26,11 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
   <div class="navbar-header">
-    <a class="navbar-brand" href="#">Jing Dong</a>
+    <a class="navbar-brand" href="index.html">Jing Dong</a>
   </div>
   <div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="index.html">Home</a></li>
       <li><a href="files/jing_cv.pdf">CV</a></li>
     </ul>
   </div>
@@ -88,6 +78,7 @@
   </div>
 </div>
 
+
 <!-- news -->
 <div class="container">
   <h2>News</h2>
@@ -97,18 +88,7 @@
       <ul>
         <li><span style="font-weight:bold">Jun 2017 - </span>Our <a href="files/Dong17icra.pdf">4D agriculture</a> work is recently highlighted by <a href="https://nifa.usda.gov/announcement/4d-innovation-georgia-fields">USDA</a>, <a href="https://www.agweb.com/article/farming-in-the-fourth-dimension-naa-ben-potter/">Ag Web</a>, <a href="http://www.agprofessional.com/resource-centers/precision-ag/farming-fourth-dimension"/>Ag Professional</a>, <a href="http://www.agdaily.com/technology/georgia-researchers-4d-farming-fields/">Ag Daily</a> and <a href="http://www.cc.gatech.edu/news/592695/new-autonomous-monitoring-approach-gives-farmers-detailed-4d-look-crops">Georgia Tech College of Computing</a>. </li>
         <li><span style="font-weight:bold">Apr 2017 - </span>Our paper <a href="files/Mukadam17rss.pdf">simultaneous trajectory estimation and planning</a> has been accepted in <a href="http://www.roboticsconference.org/">RSS 2017</a>!</li>
-        <li><span style="font-weight:bold">Jan 2017 - </span>Our paper <a href="files/Dong17icra.pdf">4D reconstruction for precision agriculture</a> has been accepted in <a href="http://www.icra2017.org/">ICRA 2017</a>! Check out our video!</li>
-        <p>
-          <div class='row'>
-            <div class='col-md-2'></div>
-            <div class='col-md-8'>
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe src="https://www.youtube.com/embed/BgLlLlsKWzI" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class='col-md-2'></div>
-          </div>
-        </p>
+        <li><span style="font-weight:bold">Jan 2017 - </span>Our paper <a href="files/Dong17icra.pdf">4D reconstruction for precision agriculture</a> has been accepted in <a href="http://www.icra2017.org/">ICRA 2017</a>!</li>
         <li><span style="font-weight:bold">Dec 2016 - </span>Our work of <a href="files/Carlone15icraws.pdf">4D crop analysis</a> for precision agriculture is featured on <a href="http://link.springer.com/chapter/10.1007/978-3-319-32552-1_56">Handbook of Robotics</a>.</li>
         <li><span style="font-weight:bold">Jun 2016 - </span>I presented our work Gaussian Process Motion Planner 2 at RSS 2016, here's the <a href="https://www.youtube.com/watch?v=Ac2ubZpa25M">presentation video</a>.</li>
         <li><span style="font-weight:bold">Apr 2016 - </span>Our paper <a href="files/Dong16rss.pdf">Gaussian Process Motion Planner 2</a> has been accepted in <a href="http://www.roboticsconference.org/">RSS 2016</a>!</li>
@@ -116,401 +96,120 @@
     </div>
   </div>
 </div>
+
 <br/>
 
 <!-- publication -->
 <div class="container">
-  <h2>Publication <span style="font-weight:normal;font-size:16px"> (<a href="" onclick="showPubs(0); return false;">by date</a> / <a href="" onclick="showPubs(1); return false;">by projects</a>, * means equal contribution)</span></h2>
+  <h2>Research Projects</h2>
   <hr/>
 
-  <div id="pubs"></div>
-  <script id="pubs_by_date" language="text">
+  <h3>4D Agriculture: Spatio-Temporal 3D Reconstruction for Precision Agriculture</h3>
+  <br/>
   
   <!-- arxiv ijrr 2017 -->
   <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/gpmp2_ijrr.jpg">
-      </p>
+    <div class="col-md-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/BgLlLlsKWzI" allowfullscreen></iframe>
+      </div>
     </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Continuous-Time Gaussian Process Motion Planning via Probabilistic Inference
+    <div class="col-md-6">
+      <p>
+      Automatic crop mornitoring by low cost UAVs and UGVs is an important task in precision agriculture. In this project we collected a multi-years dataset (from 2013) at Tifton, GA with low-cost ground vehicles and drones, and proposed a full-pipeline to perform large scale <em>spatio-temporal 3D reconstruction</em>, called <em>4D reconstruction</em> (3D + time) over the field. After 4D reconstruction, we further process the 4D results to get crop information like height, growth rate, etc. Currently we are still working on the machine learning algorithm for robust data association (feature matching) using convolutional neural network.
+      </p>
+
+ 			<br/>
+      <p>
+      <span style="font-weight: bold;">Publication:</span>
+      </p>
+      <span style='font-size: 14px;'>
+      <p>
+      [1] J. Dong, J. Burnham, B. Boots, G. C. Rains, F. Dellaert, 4D Crop Monitoring: Spatio-Temporal Reconstruction for Agriculture, in <span style="font-style:italic">ICRA</span> 2017. <a href="files/Dong17icra.pdf">[PDF]</a>
+      </p>
+  		<p>
+      [2] K. Ahlin <span style="font-style:italic">et al.</span>, Robotics for Spatially and Temporally Unstructured Agricultural Environments. Book chapter in <span style="font-style:italic">Robotics and Mechatronics for Agriculture</span>, 2017.
+    	</p>
+      <p>
+      [3] L. Carlone, J. Dong, S. Fenu, G. C. Rains, F. Dellaert, Towards 4D Crop Analysis in Precision Agriculture: Estimating Plant Height and Crown Radius over Time via Expectation-Maximization, in <span style="font-style:italic">ICRA Workshop on Robotics in Agriculture</span>, 2015. <a href="files/Carlone15icraws.pdf">[PDF]</a>
+      </p>
       </span>
-      <br/>
-      Mustafa Mukadam*, <span style="text-decoration: underline;">Jing Dong*</span>, Xinyan Yan, Frank Dellaert, Byron Boots
-      <br/>
-      <span style="font-style:italic">ArXiv preprint</span> 1707.07383, submitted to <span style="font-style:italic">International Journal of Robotics Research (IJRR)</span>
-      <br/>
-      <a href="files/Mukadam17arxiv.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://github.com/gtrll/gpmp2" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
     </div>
   </div>
   
   <br/>
 
-  <!-- rss 2017 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/vectorrobot.jpg">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Simultaneous Trajectory Estimation and Planning via Probabilistic Inference
-      </span>
-      <br/>
-      Mustafa Mukadam, <span style="text-decoration: underline;">Jing Dong</span>, Frank Dellaert, Byron Boots
-      <br/>
-      <span style="font-style:italic">Robotics: Science and Systems (RSS)</span>, 2017
-      <br/>
-      <a href="files/Mukadam17rss.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://www.youtube.com/watch?v=lyayNKV1eAQ&t" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>,
-      <a href="https://github.com/gtrll/piper" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
-    </div>
-  </div>
-  
+  <h3>Real-time and Online Motion Planning as a Probabilistic Inference Framework</h3>
   <br/>
-  
-  <!-- arxiv2 2017 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/gplie3.png">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Sparse Gaussian Processes for Continuous-Time Trajectory Estimation on Matrix Lie Groups
-      </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, Byron Boots, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">ArXiv preprint</span> 1705.06020
-      <br/>
-      <a href="files/Dong17arxiv2.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://github.com/gtrll/gpslam" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- icra 2017 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/field.jpg">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        4D Crop Monitoring: Spatio-Temporal Reconstruction for Agriculture
-      </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, John Gary Burnham, Byron Boots, Glen C. Rains, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">IEEE International Conference on Robotics and Automation (ICRA)</span>, 2017
-      <br/>
-      <a href="files/Dong17icra.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://youtu.be/BgLlLlsKWzI" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- rss 2016 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/dong16rss.png">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Motion Planning as Probabilistic Inference using Gaussian Processes and Factor Graphs
-      </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, Mustafa Mukadam, Frank Dellaert, Byron Boots
-      <br/>
-      <span style="font-style:italic">Robotics: Science and Systems (RSS)</span>, 2016
-      <br/>
-      <a href="files/Dong16rss.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://youtu.be/mVA8qhGf7So" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>,
-      <a href="https://github.com/gtrll/gpmp2" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
-<!--      <a href="https://gtrllstart.aerobatic.io/project/motion_planning/" title="Project Page"><i class="fa fa-home" style="color:#000000;font-size:20px"></i> Project Page</a>-->
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- csm 2016 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/multi_quad.png">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Incremental Distributed Inference from Arbitrary Poses and Unknown Data Association: Using Collaborating Robots to Establish a Common Reference
-      </span>
-      <br/>
-      Vadim Indelman, Erik Nelson, <span style="text-decoration: underline;">Jing Dong</span>, Nathan Michael, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">IEEE Control Systems Magazine (CSM), Special Issue on Distributed Control and Estimation for Robotic Vehicle Networks</span>, 36(2):41-74, 2016
-      <br/>
-      <a href="files/Indelman16csm.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- icra 2015 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/multi_robot.jpg">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Distributed Real-time Cooperative Localization and Mapping using an Uncertainty-Aware Expectation Maximization Approach
-      </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, Erik Nelson, Vadim Indelman, Nathan Michael, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">IEEE International Conference on Robotics and Automation (ICRA)</span>, 2015
-      <br/>
-      <a href="files/Dong15icra.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://youtu.be/m_bLSdsT2kg" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- icraws 2015 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/agcrop.png">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Towards 4D Crop Analysis in Precision Agriculture: Estimating Plant Height and Crown Radius over Time via Expectation-Maximization
-      </span>
-      <br/>
-      Luca Carlone, <span style="text-decoration: underline;">Jing Dong</span>, Stefano Fenu, Glen C. Rains, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">ICRA Workshop on Robotics in Agriculture</span>, 2015
-      <br/>
-      <a href="files/Carlone15icraws.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  </script>
-
-  <script id="pubs_by_topic" language="text">
-  
-  <h3>Spatio-temporal Reconstruction for Agriculture</h3>
-  
-  <!-- icra 2017 -->
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/field.jpg">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        4D Crop Monitoring: Spatio-Temporal Reconstruction for Agriculture
-      </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, John Gary Burnham, Byron Boots, Glen C. Rains, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">IEEE International Conference on Robotics and Automation (ICRA)</span>, 2017
-      <br/>
-      <a href="files/Dong17icra.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://youtu.be/BgLlLlsKWzI" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <div class="row">
-    <div class="col-md-3">
-      <p>
-        <img class="img-thumbnail img-responsive" src="images/agcrop.png">
-      </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Towards 4D Crop Analysis in Precision Agriculture: Estimating Plant Height and Crown Radius over Time via Expectation-Maximization
-      </span>
-      <br/>
-      Luca Carlone, <span style="text-decoration: underline;">Jing Dong</span>, Stefano Fenu, Glen C. Rains, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">ICRA Workshop on Robotics in Agriculture</span>, 2015
-      <br/>
-      <a href="files/Carlone15icraws.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <h3>Real-time Motion Planning by Gaussian Processes</h3>
   
   <!-- arxiv ijrr 2017 -->
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/lyayNKV1eAQ" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col-md-6">
       <p>
-        <img class="img-thumbnail img-responsive" src="images/gpmp2_ijrr.jpg">
+      In this project we proposed a framework using sparse Gaussian process (GP), formulating motion planning problems as probabilistic inference on factor graphs, and efficiently solve the problems by non-linear least squares or Bayes trees. Evaluation shows our C++ implementation of proposed algorithm reaches real-time performance on online motion planning tasks. We are currently working on a SLAM pipeline using Kinect input to percept dynamic 3D environments and get dynamic 3D volumetric reconstructions.
       </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Continuous-Time Gaussian Process Motion Planning via Probabilistic Inference
-      </span>
-      <br/>
-      Mustafa Mukadam*, <span style="text-decoration: underline;">Jing Dong*</span>, Xinyan Yan, Frank Dellaert, Byron Boots
-      <br/>
-      <span style="font-style:italic">ArXiv preprint</span> 1707.07383, submitted to <span style="font-style:italic">International Journal of Robotics Research (IJRR)</span>
-      <br/>
-      <a href="files/Mukadam17arxiv.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://github.com/gtrll/gpmp2" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
-    </div>
-  </div>
-  
-  <br/>
+      <p>
+      We have released the open-source C++/Matlab code at <a href="https://github.com/gtrll/gpmp2">GPMP2</a>.
+      </p>
 
-
-  <!-- rss 2017 -->
-  <div class="row">
-    <div class="col-md-3">
+       <br/>
       <p>
-        <img class="img-thumbnail img-responsive" src="images/vectorrobot.jpg">
+      <span style="font-weight: bold;">Publication:</span><span style='font-size: 14px;'> (* equal contribution)</span>
       </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Simultaneous Trajectory Estimation and Planning via Probabilistic Inference
-      </span>
-      <br/>
-      Mustafa Mukadam, <span style="text-decoration: underline;">Jing Dong</span>, Frank Dellaert, Byron Boots
-      <br/>
-      <span style="font-style:italic">Robotics: Science and Systems (RSS)</span>, 2017
-      <br/>
-      <a href="files/Mukadam17rss.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://www.youtube.com/watch?v=lyayNKV1eAQ&t" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>,
-      <a href="https://github.com/gtrll/piper" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- arxiv2 2017 -->
-  <div class="row">
-    <div class="col-md-3">
+      <span style='font-size: 14px;'>
       <p>
-        <img class="img-thumbnail img-responsive" src="images/gplie3.png">
+      [1] M. Mukadam*, J. Dong*, Y. Yan, F. Dellaert, B. Boots, Continuous-Time Gaussian Process Motion Planning via Probabilistic Inference, <span style="font-style:italic">ArXiv preprint</span> 1707.07383, conditionally accepted in <span style="font-style:italic">IJRR</span>. <a href="files/Mukadam17arxiv.pdf">[PDF]</a>
       </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Sparse Gaussian Processes for Continuous-Time Trajectory Estimation on Matrix Lie Groups
-      </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, Byron Boots, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">ArXiv preprint</span> 1705.06020
-      <br/>
-      <a href="files/Dong17arxiv2.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://github.com/gtrll/gpslam" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- rss 2016 -->
-  <div class="row">
-    <div class="col-md-3">
       <p>
-        <img class="img-thumbnail img-responsive" src="images/dong16rss.png">
+      [2] J. Dong, B. Boots, F. Dellaert, Sparse Gaussian Processes for Continuous-Time Trajectory Estimation on Matrix Lie Groups, <span style="font-style:italic">ArXiv preprint</span> 1705.06020. <a href="files/Dong17arxiv2.pdf">[PDF]</a>
       </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Motion Planning as Probabilistic Inference using Gaussian Processes and Factor Graphs
-      </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, Mustafa Mukadam, Frank Dellaert, Byron Boots
-      <br/>
-      <span style="font-style:italic">Robotics: Science and Systems (RSS)</span>, 2016
-      <br/>
-      <a href="files/Dong16rss.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://youtu.be/mVA8qhGf7So" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>,
-      <a href="https://github.com/gtrll/gpmp2" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
-<!--      <a href="https://gtrllstart.aerobatic.io/project/motion_planning/" title="Project Page"><i class="fa fa-home" style="color:#000000;font-size:20px"></i> Project Page</a>-->
-    </div>
-  </div>
-  
-  <br/>
-  
-  <h3>Real-time Distributed Multi Robot SLAM</h3>
-  <!-- csm 2016 -->
-  <div class="row">
-    <div class="col-md-3">
       <p>
-        <img class="img-thumbnail img-responsive" src="images/multi_quad.png">
+      [3] M. Mukadam, J. Dong, F. Dellaert, B. Boots, Simultaneous Trajectory Estimation and Planning via Probabilistic Inference, in <span style="font-style:italic">RSS</span> 2017. <a href="files/Mukadam17rss.pdf">[PDF]</a>
       </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Incremental Distributed Inference from Arbitrary Poses and Unknown Data Association: Using Collaborating Robots to Establish a Common Reference
-      </span>
-      <br/>
-      Vadim Indelman, Erik Nelson, <span style="text-decoration: underline;">Jing Dong</span>, Nathan Michael, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">IEEE Control Systems Magazine (CSM), Special Issue on Distributed Control and Estimation for Robotic Vehicle Networks</span>, 36(2):41-74, 2016
-      <br/>
-      <a href="files/Indelman16csm.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>
-    </div>
-  </div>
-  
-  <br/>
-  
-  <!-- icra 2015 -->
-  <div class="row">
-    <div class="col-md-3">
       <p>
-        <img class="img-thumbnail img-responsive" src="images/multi_robot.jpg">
+      [4] J. Dong, M. Mukadam, F. Dellaert, B. Boots, Motion Planning as Probabilistic Inference using Gaussian Processes and Factor Graphs, in <span style="font-style:italic">RSS</span> 2016. <a href="files/Dong16rss.pdf">[PDF]</a>
       </p>
-    </div>
-    <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Distributed Real-time Cooperative Localization and Mapping using an Uncertainty-Aware Expectation Maximization Approach
       </span>
-      <br/>
-      <span style="text-decoration: underline;">Jing Dong</span>, Erik Nelson, Vadim Indelman, Nathan Michael, Frank Dellaert
-      <br/>
-      <span style="font-style:italic">IEEE International Conference on Robotics and Automation (ICRA)</span>, 2015
-      <br/>
-      <a href="files/Dong15icra.pdf" title="Paper"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Paper</a>,
-      <a href="https://youtu.be/m_bLSdsT2kg" title="Video"><i class="fa fa-youtube-play" style="color:#bb0000;font-size:20px"></i> Video</a>
     </div>
-  </div>
-  
-  <br/>
-  
-  </script>
-
   </div>
 
-  <script>showPubs(1);</script>
+  <br/>
+
+  <h3>Real-time Distributed and Cooperative Multi-robot SLAM</h3>
+  <br/>
   
+  <!-- arxiv ijrr 2017 -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/m_bLSdsT2kg" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <p>
+      We demonstrated distributed, online, and real-time cooperative localization and mapping between multiple robots operating throughout an unknown environment with unknown initial deployment. We present a novel Expectation Maximization (EM) based approach to efficiently online identify inlier multi-robot loop closures by incorporating robot pose uncertainty, which significantly improves the trajectory accuracy over long-term navigation. Evaluation was performed on CMU quadrotor swarm.
+      </p>
+
+      <br/>
+      <p>
+      <span style="font-weight: bold;">Publication:</span>
+      </p>
+      <span style='font-size: 14px;'>
+      <p>
+      [1] J. Dong, E. Nelson, V. Indelman, N. Michael, F. Dellaert, Distributed Real-time Cooperative Localization and Mapping using an Uncertainty-Aware Expectation Maximization Approach, in <span style="font-style:italic">ICRA</span> 2015. <a href="files/Dong15icra.pdf">[PDF]</a>
+      </p>
+  		<p>
+      [2] V. Indelman, E. Nelson, J. Dong, N. Michael, F. Dellaert, Incremental Distributed Inference from Arbitrary Poses and Unknown Data Association: Using Collaborating Robots to Establish a Common Reference, in <span style="font-style:italic">IEEE Control Systems Magazine</span>, 2016. <a href="files/Dong15icra.pdf">[PDF]</a>
+    	</p>
+      </span>
+    </div>
+  </div>
+
 </div>
 <br/>
 
@@ -518,8 +217,9 @@
 <div class="container">
   <h2>Other Interesting Stuff</h2>
   <hr/>
-  <br/>
   
+  <h3>GTSAM Tutorial</h3>
+
   <div class="row">
     <div class="col-md-3">
       <p>
@@ -527,18 +227,17 @@
       </p>
     </div>
     <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        GTSAM Tutorial
-      </span>
-      <br/>
+    	<p>
       <a href="https://bitbucket.org/gtborg/gtsam/">GTSAM</a> is a library of C++/Matlab/Python classes that implement smoothing and mapping (SAM) in robotics and vision. I participate development and maintenance of GTSAM, and use GTSAM in most of my projects. A short tutorial slides and example code for GTSAM version 4.0 is available.
-      <br/>
-      <a href="files/gtsam-tutorial.pdf" title="Slides"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Slides</a>,
-      <a href="https://github.com/dongjing3309/gtsam-examples" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
+      </p>
+      <p>
+      <a href="files/gtsam-tutorial.pdf" title="Slides">Slides</a> and 
+      <a href="https://github.com/dongjing3309/gtsam-examples" title="Code">example code</a> are available.
+      </p>
     </div>
   </div>
-  
-  <br/>
+
+  <h3>Tutorial of Gaussian Processes in Robotics</h3>
 
   <div class="row">
     <div class="col-md-3">
@@ -547,14 +246,12 @@
       </p>
     </div>
     <div class="col-md-9">
-      <span style="font-weight:bold;font-size:18px">
-        Tutorial of Gaussian Processes in Robotics
-      </span>
-      <br/>
+    	<p>
       Continuous-time trajectory representations are powerful tools to overcome many difficulties in discrete-time SLAM, like motion distortion, asynchronous data, etc. In this tutorial, we discuss Gaussian processes (GPs) as continuous-time trajectory representations in SLAM and motion planning, and give several applications of GPs in robotics.
-      <br/>
-      <a href="files/gp-tutorial.pdf" title="Slides"><i class="fa fa-file-pdf-o" style="color:#d81d00;font-size:20px"></i> Slides</a>,
-      <a href="https://github.com/gtrll/gpmp2" title="Code"><i class="fa fa-github" style="color:#000000;font-size:20px"></i> Code</a>
+      </p>
+      <p>
+      <a href="files/gp-tutorial.pdf" title="Slides">Slides</a> and <a href="https://github.com/gtrll/gpmp2" title="Code">example code</a> are available.
+      </p>
     </div>
   </div>
 
